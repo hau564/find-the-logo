@@ -30,7 +30,7 @@ export default function Home() {
     
     // Get image dimensions and position
     const rect = imageRef.current.getBoundingClientRect();
-    const scale = 1;
+    const scale =  0.5;
     const x = (event.clientX - rect.left) / scale;
     const y = (event.clientY - rect.top) / scale;
     
@@ -114,11 +114,11 @@ export default function Home() {
           </div>
         ) : (
           <>
-            <h1 className="text-2xl font-bold text-black relative">Find "{logos[index]}"</h1>
             <div 
               ref={imageRef} 
               className="relative cursor-pointer" 
               onClick={handleImageClick}
+              style={{transformOrigin: 'top left' }}
             >
               <img
                 src={images[index]}
@@ -127,6 +127,7 @@ export default function Home() {
                 style={{ maxWidth: 'none' }}
               />
             </div>
+            <h1 className="text-2xl font-bold text-black relative">Click on {index === 4 ? logos[index] : `"${logos[index]}"`}</h1>
             <button 
               onClick={handleSkip}
               className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
